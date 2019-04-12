@@ -21,7 +21,9 @@ class FlaskTestCase(unittest.TestCase):
     def test_uppercase(self):
         response = self.app.get('/touppercase?s=hoi')
         resp = json.loads(response.data)
-        self.assertEqual(resp,"HOI",'Did not return HOI for input hoi')
+        response = resp.data
+        response = resp.data.decode('utf-8')
+        self.assertEqual(response,"HOI",'Did not return HOI for input hoi')
 
     # TODO DEFINE TWO MORE TESTS ON THE END POINTS
 
